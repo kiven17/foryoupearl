@@ -1,4 +1,4 @@
-const girlfriendName = "My Love";
+const girlfriendName = "hello po";
 
 const messageLines = [
   "hi pearl good morning sinakto ko to ng 12 am para me the first one,",
@@ -38,6 +38,10 @@ const typingLines = document.getElementById("typing-lines");
 const nameSlot = document.getElementById("name-slot");
 const music = document.getElementById("bg-music");
 const musicToggle = document.getElementById("music-toggle");
+const galleryImages = document.querySelectorAll(".gallery .polaroid img");
+const imageModal = document.getElementById("image-modal");
+const imageModalPreview = document.getElementById("image-modal-preview");
+const imageModalClose = document.getElementById("image-modal-close");
 
 const urlName = new URLSearchParams(window.location.search).get("name");
 nameSlot.textContent = urlName || girlfriendName;
@@ -150,6 +154,19 @@ function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function openImageModal(sourceImage) {
+  imageModalPreview.src = sourceImage.src;
+  imageModalPreview.alt = sourceImage.alt || "Expanded memory photo";
+  imageModal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function closeImageModal() {
+  imageModal.classList.add("hidden");
+  imageModalPreview.src = "";
+  document.body.style.overflow = "";
+}
+
 let musicOn = false;
 
 function setMusicButtonState() {
@@ -193,6 +210,23 @@ toEndingBtn.addEventListener("click", () => {
   launchConfettiBurst(220);
 });
 musicToggle.addEventListener("click", toggleMusic);
+
+galleryImages.forEach((image) => {
+  image.addEventListener("click", () => openImageModal(image));
+});
+
+imageModalClose.addEventListener("click", closeImageModal);
+imageModal.addEventListener("click", (event) => {
+  if (event.target === imageModal) {
+    closeImageModal();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !imageModal.classList.contains("hidden")) {
+    closeImageModal();
+  }
+});
 
 if (topbar) {
   gsap.fromTo(topbar, { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" });

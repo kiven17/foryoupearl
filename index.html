@@ -49,7 +49,7 @@
           <span class="avatar">💌</span>
           <span>
             <strong>From: Someone who adores you</strong>
-            <small>Tap to open your birthday letter</small>
+            <small>Tap to open</small>
           </span>
         </button>
       </div>
@@ -67,7 +67,7 @@
     <section id="memories" class="screen hidden section-center">
       <div class="memory-wrap reveal">
         <p class="eyebrow">Memory Lane</p>
-        <h2>Moments I never want to forget</h2>
+        <h2>hehe ito na yung something</h2>
         <div class="gallery">
           <figure class="polaroid"><img id="memory-user-photo" src="https://images.unsplash.com/photo-1516589091380-5d8e87df6992?auto=format&fit=crop&w=900&q=80" alt="Her photo" /><figcaption>Your beautiful smile</figcaption></figure>
           <figure class="polaroid"><img id="memory-user-photo-2" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Her second photo" /><figcaption>Another reason I smile</figcaption></figure>
@@ -85,6 +85,11 @@
       </div>
     </section>
   </main>
+
+  <div id="image-modal" class="image-modal hidden" role="dialog" aria-modal="true" aria-label="Expanded photo preview">
+    <button id="image-modal-close" class="image-modal-close" aria-label="Close expanded image">×</button>
+    <img id="image-modal-preview" src="" alt="Expanded memory photo" />
+  </div>
 
   <audio id="bg-music" loop preload="none" src="music.mp3"></audio>
 
